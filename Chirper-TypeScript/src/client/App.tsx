@@ -5,33 +5,44 @@ class App extends React.Component<IAppProps, IAppState> {
     constructor(props: IAppProps) {
         super(props);
         this.state = {
-            name: null
+            chirpsA: []
         };
     }
 
-    async componentWillMount() {
+    async componentDidMount() {
         try {
-            let r = await fetch('/api/hello');
-            let name = await r.json();
-            this.setState({ name });
+            let r = await fetch('/api/chirps');
+            let chirps = await r.json();
+            //console.log(chirps);
+            
+            this.setState({
+                chirpsA: chirps
+            });
+
         } catch (error) {
             console.log(error);
         }
     }
 
     render() {
-        return (
+        console.log(this.state.chirpsA);
+        return (this.state.chirpsA.map((value, index)=> {(
             <main className="container my-5">
-                <h1 className="text-primary text-center">Hello {this.state.name}!</h1>
+                <h1 className="text-primary text-center">{value.name}: {value.text}</h1>
             </main>
-        )
+        )}));
     }
+}
+
+interface Chirp {
+    name: string,
+    text: string;
 }
 
 export interface IAppProps { }
 
 export interface IAppState {
-    name: string;
+    chirpsA: Array<Chirp>;
 }
 
 export default App;
