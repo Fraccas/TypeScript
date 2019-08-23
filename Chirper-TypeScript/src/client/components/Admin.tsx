@@ -41,8 +41,11 @@ class Admin extends Component<IAdminProps, IAdminState> {
                     <input type="text" className="form-control" defaultValue={this.state.chirp.text}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({nText: e.target.value})}></input>
 
-                    <button className="btn btn-deep-teal ml-0 mt-3" type="submit"
-                    onClick={this.UpdateChirp}>Submit Chirp</button>
+                    <button className="btn btn-warning ml-0 mt-3" type="submit"
+                    onClick={this.UpdateChirp}>Update Chirp</button>
+
+                    <button className="btn btn-danger ml-2 mt-3" type="submit"
+                    onClick={this.DeleteChirp}>Delete Chirp</button>
 
                     <button className="btn btn-deep-teal ml-2 mt-3" type="submit"
                     onClick={() => {this.props.history.push('/')}}>  Back  </button>
@@ -70,6 +73,21 @@ class Admin extends Component<IAdminProps, IAdminState> {
             mode: 'cors',
             credentials: 'same-origin',
             body: JSON.stringify(this.state.chirp),
+        }).then(response => {           
+            this.props.history.push('/');
+        });
+    }
+
+    DeleteChirp = () => {
+        let url = '/api/chirps/delete/' + this.state.id;
+        return fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors',
+            credentials: 'same-origin'
         }).then(response => {           
             this.props.history.push('/');
         });
