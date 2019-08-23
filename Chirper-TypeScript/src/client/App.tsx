@@ -9,12 +9,12 @@ class App extends React.Component {
         return (
         <Router>
             <div className="nav-container router">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav className="navbar navbar-expand-sm navbar-light bg-deep-teal font-weight-bold">
                 <ul className="navbar-nav mr-auto">
-                    <li><Link to={'/'} className="nav-link"> Home </Link></li>             
+                    <li><Link to={'/'} className="nav-link"> Chirper </Link></li>             
                 </ul>
                 <ul className="navbar-nav navbar-right">
-                    <li><Link to={'/admin/-1'} className="nav-link"> Admin </Link></li>
+                    <li><Link to={'/'} className="nav-link"> Chirps </Link></li>
                     <li><Link to={'/chirp/add'} className="nav-link"> Add Chirp </Link></li> 
                 </ul>
                 </nav>

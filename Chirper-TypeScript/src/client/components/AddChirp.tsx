@@ -12,9 +12,9 @@ export default class AddChirp extends React.Component<IAddProps, IAddState> {
   
     render() {
         return (
-            <div className="input-container">
-                <h2>Add Chirp</h2>
-                <div className="form-group">
+            <div className="input-container bg-light p-2 m-0">       
+                <div className="form-group m-4 rounded p-4 border shadow">
+                    <h2 className="text-center p-2 rounded bg-deep-purple text-light">Add Chirp</h2>
                     <label htmlFor="name">Name</label>
                     <input type="text" className="form-control" defaultValue=""
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({name: e.target.value})}></input>
@@ -23,7 +23,7 @@ export default class AddChirp extends React.Component<IAddProps, IAddState> {
                     <input type="text" className="form-control" defaultValue=""
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({chirp: e.target.value})}></input>
 
-                    <button className="btn btn-primary" type="submit"
+                    <button className="btn btn-deep-purple mt-3 col-md-12 text-center" type="submit"
                     onClick={this.SubmitChirp}>Submit Chirp</button>
                 </div>
             </div>
